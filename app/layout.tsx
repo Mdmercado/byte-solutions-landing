@@ -1,48 +1,59 @@
-import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import { ThemeProvider } from '@/components/theme-provider'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { ThemeProvider } from "@/components/theme-provider";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono' })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
-  title: 'Byte Solutions IT | Software & Soluciones Digitales',
-  description: 'Soluciones de software a medida, sistemas de gestion y desarrollo SaaS para empresas. Gym, Lavaderos, Inventario y mas.',
-  generator: 'v0.app',
+  title: "Byte Solutions IT | Software & Soluciones Digitales",
+  description:
+    "Soluciones de software a medida, sistemas de gestion y desarrollo SaaS para empresas. Gym, Lavaderos, Inventario y mas.",
+  generator: "v0.app",
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
       },
       {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: "/icon.svg",
+        type: "image/svg+xml",
       },
     ],
-    apple: '/apple-icon.png',
+    apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable} antialiased`} suppressHydrationWarning>
-      <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <html
+      lang="es"
+      className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange>
           {children}
         </ThemeProvider>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
